@@ -37,22 +37,23 @@ export default function FormsPage(){
     const [subMessage, setSubMessage] = useState('')
     return (
         <main className={styles.main}>
-            <h1 data-set="forms-header" className={styles.header}>Testing Forms</h1>
+            <h1 className={styles.header}>Testing Forms</h1>
             <ItemsAccordion items={items} />
-            <TextField 
+            <TextField
+            data-test="subscribe-field"
             className={styles.input} 
             label="Email" 
             variant="filled" 
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             />
-            <Button onClick={() => {
-                if (!inputValue.includes('.com') ){
-                    setSubMessage(`Invalid email: ${inputValue}!`)
-                } else if (inputValue.length){
-                    setSubMessage(`Successfully subbed: ${inputValue}!`)
-                } else {
+            <Button data-test="subscribe-button" onClick={() => {
+                if (!inputValue.length) {
                     setSubMessage('fail!')
+                } else if (!inputValue.includes('.com')) {
+                    setSubMessage(`Invalid email: ${inputValue}!`)
+                } else {
+                    setSubMessage(`Successfully subbed: ${inputValue}!`)
                 }
                 setTimeout(() => {
                     setSubMessage('')

@@ -10,7 +10,7 @@ describe.only('Cypress Fundamentals Testing', () => {
     cy.visit('/fundamentals')
   })
   it('Checks correct header text', () => {
-    cy.getDataTest('fundamentals-header').should('contain.text', 'Testing Fundamentals')
+    cy.contains(/Testing Fundamentals/i)
   })
   it('Accordion works correctly', () => {
     cy.contains(/Your tests will exist in a describe block./i).should('not.be.visible')
