@@ -4,14 +4,19 @@ const navItems = [
     {
     label: 'Why Cypress?',
     path: '/',
+    dataTest: 'nav-why-cypress'
     },
     {
     label: 'Overview',
-    path: '/overview'
+    path: '/overview',
+    dataTest: 'nav-overview'
     },
     {
     label: 'Fundamentals',
-    path: '/fundamentals'
+    path: '/fundamentals',
+    dataTest: 'nav-fundamentals'
+    },
+    {
     },
     {
         label: 'Forms',
@@ -19,15 +24,18 @@ const navItems = [
     },
     {
         label: 'Examples',
-        path: '/examples' 
+        path: '/examples',
+        dataTest: 'nav-examples'
     },
     {
         label: 'Component',
-        path: '/component' 
+        path: '/component',
+        dataTest: 'nav-component'
     },
     {
         label: 'Best Practices',
-        path: '/best-practices'
+        path: '/best-practices',
+        dataTest: 'nav-best-practices'
     },
 ]
 
