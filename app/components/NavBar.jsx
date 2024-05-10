@@ -16,11 +16,11 @@ const navItems = [
     path: '/fundamentals',
     dataTest: 'nav-fundamentals'
     },
-    {
-    },
+
     {
         label: 'Forms',
-        path: '/forms'
+        path: '/forms',
+        dataTest: 'nav-forms'
     },
     {
         label: 'Examples',
@@ -44,7 +44,12 @@ export default function NavBar(){
         <ul className="nav-bar">
             {
                 navItems.map((item)=> (
-                    <NavItem key={item.label} label={item.label} path={item.path} />
+                    <NavItem 
+                    key={item.label} 
+                    label={item.label} 
+                    path={item.path}
+                    dataTest={item.dataTest}
+                    />
                 ))
             }
         </ul>
