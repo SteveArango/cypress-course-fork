@@ -18,7 +18,7 @@ describe("Various examples", ()=> {
         navigateAndCheck("nav-component", "/component");
         navigateAndCheck("nav-best-practices", "/best-practices");
     })
-    it.only('intercepts', () => {
+    it('intercepts', () => {
         cy.intercept('POST', 'http://localhost:3000/examples', {
             fixture: 'example.json',
         }).as('post ALIAS')
@@ -26,6 +26,25 @@ describe("Various examples", ()=> {
     })
     it.only('testing the grudge list', () => {
         cy.contains(/add some grudges/i)
-        cy.get('post-button').should('exist')
+        cy.getDataTest('grudge-list').within(() => {
+            cy.get('li').should('have.length', 0)
+        })
+
+        cy.getDataTest('grudge-input').within(() => {
+            cy.get('input').type('First grudge')
+        })
+        cy.getDataTest('add-grudge-button').click()
+        cy.getDataTest('grudge-list').within(() => {
+            cy.get('li').should('have.length', 1)
+        })
+        cy.getDataTest('grudge-input').within(() => {
+            cy.get('input').type('Second grudge')
+        })
+        cy.getDataTest('add-grudge-button').click()
+        cy.getDataTest('grudge-list').within(() => {
+            cy.get('li').should('have.length', 2)
+            cy.get('li').its(0).should('have.text', 'First grudge')
+            cy.get('li').its(1).should('have.text', 'Second grudge')
+        })
     })
 })
