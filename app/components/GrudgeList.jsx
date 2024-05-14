@@ -48,6 +48,7 @@ export default function GrudgeList(){
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             style={{backgroundColor: 'white'}}
+            data-test='grudge-input'
             />
             </div>
             <Button onClick={addGrudge}>
